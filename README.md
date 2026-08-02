@@ -1,5 +1,9 @@
 # Feline Follower (Autonomous Pet-Tracking Robot)
-Real-time visual tracking and SLAM-based navigation to follow fast, erratic motion
+<strong>WORK IN PROGRESS</strong>
+<p>An autonomous mobile robot that utilizes real-time visual tracking and SLAM-based navigation to follow the fast, erratic motions of a Felis catus in a real, unmapped and obstacle-ridden environment. Specifically, this robot will be tracking my own cat</p>
+<details><summary>Calypso</summary>
+  <img width="300" height="400" alt="calypso" src="https://github.com/user-attachments/assets/761e2816-2d1a-450f-8220-0bf891518a11" />
+</details>
 
 ## Progress Timeline
 
@@ -18,7 +22,7 @@ Real-time visual tracking and SLAM-based navigation to follow fast, erratic moti
   </details>
   
   <details> <summary><strong>7/1/26</strong> - Built smart car from kit</summary><br>
-    <p>Initially decided to purchase a cheap autonomous vehicle kit (pictured below) from Amazon. This would allow me to focus on writing the software for the project and not have to worry about custom-built hardware.</p>
+    <p>Initially decided to purchase a cheap autonomous vehicle kit (pictured below). This would've allowed me to focus on writing the software for the project and not have to worry about custom-built hardware.</p>
     <img width=200 height=200 alt="Elegoo Smart Car" src="https://github.com/user-attachments/assets/0bfb81bb-cc9d-4f42-a743-23ac3eee5569" />
 
     
