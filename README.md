@@ -9,7 +9,7 @@ Real-time visual tracking and SLAM-based navigation to follow fast, erratic moti
   https://github.com/user-attachments/assets/8c097552-bbd2-4168-9c4e-e303f9cf0ce9  
   </details>
   
-  <details> <summary><strong>7/26/26</strong> - Redesigned Robot Control Architecture</summary><br>
+  <details> <summary><strong>7/26/26</strong> - Redesigned robot control architecture</summary><br>
     <p>
       Initially thought to establish communication with a host computer running ROS2 to the onboard Arduino using a ESP32-S3 microcontroller (included with the kit) as the intermediary. Found that the I/O Expansion shield (placed on top of the Arduino) and the ESP32 were too customized/undocumented to extend for this         project. Decided to scrap both parts, and instead use a different microcontroller as the intermediary.<br><br><b>Notably:</b> Because of this replacement, I lost access to the motor driver (TB6612FNG) attached to the I/O Expansion Shield so I would need to wire in one on my own.<br><br>For the intermiedary, I           chose to use the Raspberry Pi Model 3 B+</b> (pictured below). This Pi was chosen mainly due to budget constraints. Since the project will initially run most computations through my desktop, the Pi only needs enough power to broadcast images over WI-FI, run ROS2 to receive commands, and translate those commands         into workable Serial that can be written to the motors. Though a stronger Pi could run the computations itself, it is too expensive at the moment. The final structure will look like:<br><br>Host Computer <---ROS2 Messages---> RPI 3B+ <----Serial----> Arduino
     </p>
@@ -17,7 +17,7 @@ Real-time visual tracking and SLAM-based navigation to follow fast, erratic moti
 
   </details>
   
-  <details> <summary><strong>7/1/26</strong> - Finished Building Smart Car from Kit</summary><br>
+  <details> <summary><strong>7/1/26</strong> - Built smart car from kit</summary><br>
     <p>Initially decided to purchase a cheap autonomous vehicle kit (pictured below) from Amazon. This would allow me to focus on writing the software for the project and not have to worry about custom-built hardware.</p>
     <img width=200 height=200 alt="Elegoo Smart Car" src="https://github.com/user-attachments/assets/0bfb81bb-cc9d-4f42-a743-23ac3eee5569" />
 
