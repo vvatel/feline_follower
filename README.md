@@ -26,7 +26,7 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 #### Arduino <--> Motor Driver <--> Wheels
 
 - [x] Verify TB6612 (motor driver) wiring on breadboard
-- [ ] Connect motor driver to Arduino Uno R3 using protoshield  
+- [x] Connect motor driver to Arduino Uno R3 using protoshield  
   *(need copper wire, soldering iron stand, solder sucker, cleaning sponge)*
 - [ ] Attach Uno to chassis, and connect DC motors to Uno through protoshield
 - [ ] Attach battery pack to chassis, and connect it to DC motors (as their power source) through motor driver
@@ -91,6 +91,25 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <details>
 <summary><strong><ins>Timeline</ins></strong></summary>
 
+<details> <summary><strong>8/16/26</strong> - Successfully connected TB6612 to Arduino through protoshield </summary><br>
+
+<p>Gathered the proper equipment including a new soldering iron, stand, a soldering tip cleaner, and copper wire. </p>
+<img width="300" height="300" alt="20260816_213656" src="https://github.com/user-attachments/assets/f85936cc-1841-45b1-aafb-b38fc9b71ccd" />
+<p><b>Figure 8.16-1.</b> New protoshield held by recently acquired soldering stand</p>
+
+<p>With all of this stuff, my second attempt at soldering the TB6612 onto the protoshield and then connecting it to the Arduino's pins was much cleaner. </p>
+<img width="300" height="300" alt="20260816_213705" src="https://github.com/user-attachments/assets/99bc6218-a832-4ad2-83af-b97149881f7b" />
+<p><b>Figure 8.16-2.</b> TB6612 - Arduino wiring using solder to connect copper wire at two points</p>
+
+<p>I connected the protoshield and Arduino together and confirmed the TB6612FNG was working!</p>
+<img width="300" height="300" alt="20260816_223415" src="https://github.com/user-attachments/assets/f09eab62-9928-450d-bb55-1cd4fab487a8" />
+<p><b>Figure 8.16-3.</b> Protoshield on top of Arduino R3 </p>
+
+<p>Now comes the hard part, actually wiring the motors and power supply to the protoshield. My initial, brute force plan is to just connect pairs of holes on the protoshield together on the bottom with copper wire, then use each pair of holes, to connect pins on the Arduino, pins on the motor driver, and wires from the motors and battery pack together.</p>
+
+</details>
+
+---
 
 <details> <summary><strong>8/2/26</strong> - Attempted to permanently set wiring between TB6612 and Arduino using a protoshield </summary><br>
 
