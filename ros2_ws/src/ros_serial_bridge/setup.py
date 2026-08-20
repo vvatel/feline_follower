@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'bridge = ros_serial_bridge.bridge:main'
         ],
     },
 )
