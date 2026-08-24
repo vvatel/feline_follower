@@ -28,9 +28,9 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 - [x] Verify TB6612 (motor driver) wiring on breadboard
 - [x] Connect motor driver to Arduino Uno R3 using protoshield  
   *(need copper wire, soldering iron stand, solder sucker, cleaning sponge)*
-- [ ] Attach Uno to chassis, and connect DC motors to Uno through protoshield
-- [ ] Attach battery pack to chassis, and connect it to DC motors (as their power source) through motor driver
-- [ ] Verify that Uno is able to control all 4 wheels while attached to chassis
+- [x] Attach Uno to chassis, and connect DC motors to Uno through protoshield
+- [x] Attach battery pack to chassis, and connect it to DC motors (as their power source) through motor driver
+- [x] Verify that Uno is able to control all 4 wheels while attached to chassis
 
 ---
 
@@ -40,17 +40,17 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 - [ ] Using a breadboard, test UART communication from the Uno to Pi with a level shifter from 5V to 3.3V
 - [ ] Solder level shifter to protoshield and set bi-directional UART communication through protoshield
 - [ ] Verify communication between Pi and Uno
-- [ ] Create script for Uno to receive commands through Serial and write to motors
-- [ ] Verify that Pi is able to control all 4 wheels using Uno as intermediary
+- [x] Create script for Uno to receive commands through Serial and write to motors
+- [x] Verify that Pi is able to control all 4 wheels using Uno as intermediary
 
 ---
 
 #### Desktop <--> Raspberry Pi
 
-- [ ] Figure out ROS2 communication between desktop and Raspberry Pi 3B+ over Wi-Fi  
+- [x] Figure out ROS2 communication between desktop and Raspberry Pi 3B+ over Wi-Fi  
   *(possibly need a router)*
-- [ ] Create bridge node on Pi for translating ROS2 Twist messages to workable PWM values that can be sent to Arduino
-- [ ] Verify that Pi is able to subscribe to topics, receive Twist messages, and use it to control the wheels
+- [x] Create bridge node on Pi for translating ROS2 Twist messages to workable PWM values that can be sent to Arduino
+- [x] Verify that Pi is able to subscribe to topics, receive Twist messages, and use it to control the wheels
 
 ---
 
@@ -91,19 +91,30 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <details>
 <summary><strong><ins>Timeline</ins></strong></summary>
 
-<details> <summary><strong>8/16/26</strong> - Successfully connected TB6612 to Arduino through protoshield </summary><br>
+<details><summary><strong>8/19/26</strong> - Connected the motor's wires to the protoshield </summary>
+
+<p>Now that I had the motor driver attached to the arduino, I could finally work on the wiring for the motors. Luckily, the protoshield that I used had multiple strips of connected holes allowing me to connect the motors and the motor driver easily.</p>
+<img width="600" height="500" alt="Motor Wiring" src="https://github.com/user-attachments/assets/353246b9-4126-417d-a2ca-75aedde62a0b" />
+<p><b>Figure 8.19-1.</b> Motor <-> Motor Driver Wiring Diagram </p>
+
+<p>Once I had finished wiring up the left motors, I decided to test out the connections again.</p>
+</details>
+
+---
+
+<details> <summary><strong>8/16/26</strong> - Successfully connected motor driver to Arduino through protoshield </summary><br>
 
 <p>Gathered the proper equipment including a new soldering iron, stand, a soldering tip cleaner, and copper wire. </p>
 <img width="300" height="300" alt="20260816_213656" src="https://github.com/user-attachments/assets/f85936cc-1841-45b1-aafb-b38fc9b71ccd" />
 <p><b>Figure 8.16-1.</b> New protoshield held by recently acquired soldering stand</p>
 
 <p>With all of this stuff, my second attempt at soldering the TB6612 onto the protoshield and then connecting it to the Arduino's pins was much cleaner. </p>
-<img width="300" height="300" alt="20260816_213705" src="https://github.com/user-attachments/assets/99bc6218-a832-4ad2-83af-b97149881f7b" />
+<img width="300" height="300" alt="20260818_015825" src="https://github.com/user-attachments/assets/4e8cd134-fb87-4833-abb4-a23ea18a70b5" />
 <p><b>Figure 8.16-2.</b> TB6612 - Arduino wiring using solder to connect copper wire at two points</p>
 
 <p>I connected the protoshield and Arduino together and confirmed the TB6612FNG was working!</p>
 <img width="300" height="300" alt="20260816_223415" src="https://github.com/user-attachments/assets/f09eab62-9928-450d-bb55-1cd4fab487a8" />
-<p><b>Figure 8.16-3.</b> Protoshield on top of Arduino R3 </p>
+<p><b>Figure 8.16-3.</b> Protoshield on top of Arduino Uno</p>
 
 <p>Now comes the hard part, actually wiring the motors and power supply to the protoshield. My initial, brute force plan is to just connect pairs of holes on the protoshield together on the bottom with copper wire, then use each pair of holes, to connect pins on the Arduino, pins on the motor driver, and wires from the motors and battery pack together.</p>
 
