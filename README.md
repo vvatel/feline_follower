@@ -81,12 +81,8 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 
 - [ ] Figure out ROS2 Nav2 package
 
-
 </details>
-
-
 </details>
-
 
 <details>
 <summary><strong><ins>Timeline</ins></strong></summary>
@@ -97,7 +93,10 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <img width="600" height="500" alt="Motor Wiring" src="https://github.com/user-attachments/assets/353246b9-4126-417d-a2ca-75aedde62a0b" />
 <p><b>Figure 8.19-1.</b> Motor <-> Motor Driver Wiring Diagram </p>
 
-<p>Once I had finished wiring up the left motors, I decided to test out the connections again.</p>
+<p>Once I had finished wiring up the motors, I decided to test out the connections one more time before putting it all together. The Arduino was velcroed to the bottom layer of the frame, and the Raspberry Pi is running a <a href="ros2_ws/src/ros_serial_bridge/ros_serial_bridge/bridge.py">ROS2 node</a> that for now simply communicates through USB/Serial static PWM commands that the Arduino should write to the motors.</p>
+<video src="resources/videos/motors_fully_wired_demo.mp4"></video>
+<p><b>Figure 8.19-2.</b> Demo of motors running while the wires are semi-permanenetly (soldered) to the Arduino</p>
+
 </details>
 
 ---
@@ -188,7 +187,6 @@ https://github.com/user-attachments/assets/8c097552-bbd2-4168-9c4e-e303f9cf0ce9
 <p><b>Figure 7.1-1.</b> ELEGOO Smart Robot Car Kit V4.0, as originally assembled.</p>
 
 </details>
-
 
 </details>
   
