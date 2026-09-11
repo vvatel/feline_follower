@@ -94,7 +94,8 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <p><b>Figure 8.19-1.</b> Motor <-> Motor Driver Wiring Diagram </p>
 
 <p>Once I had finished wiring up the motors, I decided to test out the connections one more time before putting it all together. The Arduino was velcroed to the bottom layer of the frame, and the Raspberry Pi is running a <a href="ros2_ws/src/ros_serial_bridge/ros_serial_bridge/bridge.py">ROS2 node</a> that for now simply communicates through USB/Serial static PWM commands that the Arduino should write to the motors.</p>
-<video src="resources/videos/motors_fully_wired_demo.mp4"></video>
+
+https://github.com/user-attachments/assets/2925ada0-4e94-47b5-95f9-884456f6ebad
 <p><b>Figure 8.19-2.</b> Demo of motors running while the wires are semi-permanenetly (soldered) to the Arduino</p>
 
 </details>
