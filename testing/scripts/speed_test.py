@@ -12,23 +12,33 @@ test_data = {
     100: [1.18, 1.13, 1.13, 1.19, 1.14]
 }
 
-x = []
-y = []
+def convert_time_to_speed(input_time):
+    return 1 / input_time
 
-for pwm, times in test_data.items():
-    x.append(pwm)
-    y.append(np.mean(times))
+if __name__ == '__main__':
+    x = []
+    y = []
 
-x, y = np.array(x), np.array(y)
+    
 
-print(Polynomial.fit(x, y, 2))
-# y_pred = m * x + c
 
-# plt.xlabel("PWM")
-# plt.ylabel("Time (s)")
-# plt.title("Time to Traverse 1 Meter vs PWM")
-# plt.plot(x,y, 'o-', label="Average Time")
-# plt.plot(x, y_pred, 'o-', label="Predicted Time")
+    for pwm, times in test_data.items():
+        x.append(pwm)
+        y.append(
+            convert_time_to_speed(np.mean(times))
+        )
 
-# plt.legend()
-# plt.show()
+    x, y = np.array(x), np.array(y)
+
+    forward_pred = Polynomial.fit(x, y, 3)
+    inverse_pred = Polynomial.fit(y, x, 3)
+
+    plt.xlabel("PWM (%)")
+    plt.ylabel("Speed (m/s)")
+    plt.plot(x,y, 'o-', label="Average")
+
+    x_pred = np.arange(25,100)
+    plt.plot(x_pred, forward_pred(x_pred), '--', label="Predicted")
+
+    plt.legend()
+    plt.show()
