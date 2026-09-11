@@ -5,20 +5,34 @@ import serial
 import struct
 
 from geometry_msgs.msg import Twist
+from std_msgs.msg import Int32MultiArray
 
 class BridgeNode(Node):
 
     def __init__(self):
         super().__init__("bridge_node")
-        self.subscription = self.create_subscription(Twist, 'topic', self.message_cb, 10)
+        self.subscription = self.create_subscription(Twist, 'cmd_vel', self.message_cb, 10)
+        self.pwm_subscription = self.create_subscription(Int32MultiArray, 'pwm', self.pwm_msg_cb, 10)
+
+
         self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
         self.wheel_separation = 0.13  # meters
         self.max_speed = 1.11824123 # meters per second
+        self.get_logger().info("Ready to convert some Twist messages!")
 
     def message_cb(self, msg):
         left_pwm, right_pwm = self.diff_drive_kinematics(msg.linear.x, msg.angular.z)
-        self.get_logger().info(f"Sent Left PWM: {left_pwm} and Right PWM: {right_pwm}")
+        self.send_pwm_over_serial(left_pwm, right_pwm)
 
+    def pwm_msg_cb(self, msg):
+        left_pwm, right_pwm = msg.data
+        self.send_pwm_over_serial(left_pwm, right_pwm)
+
+
+
+    def send_pwm_over_serial(self, left_pwm = 0, right_pwm = 0):
+        self.get_logger().info(f"Sent Left PWM: {left_pwm} and Right PWM: {right_pwm}")
+                
         packet = struct.pack('Bbb', 0xFF, left_pwm, right_pwm)
         self.ser.write(packet)
 
