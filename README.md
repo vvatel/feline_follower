@@ -87,6 +87,22 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <details>
 <summary><strong><ins>Timeline</ins></strong></summary>
 
+<details><summary><strong>9/10/26</strong> - Conducted Testing to Calibrate Linear Speed to PWM Conversion</summary>
+<p>Even though I could send Twist commands to my prototype vehicle, I still hadn't figured out how to make the car move as quickly or as slowly as I wanted. What PWM should I write to the motors such that they move the car at a specific linear speed. My first approach to solve this is to test the vehicle moving with different PWM percentages and seeing how long it takes it to travel 1 meter (for ease of conversion). For each PWM %, I collected 5 different run times so that I could average out any outliers in my data collection. Then, I used NumPy to fit a linear regression model predicting the underlying conversion equation and then plotted everything using MatPlotLib.</p>
+  
+<img width="320" height="240" alt="Linear_Speed_Test_Figure_1" src="https://github.com/user-attachments/assets/e6247479-2b0f-497f-8def-88a0d265871f" />
+<p><b>Figure 9.10-1.</b> Each dot represents a different PWM % trialed, and the average of the 5 run times it took to travel 1 meter</p>
+<img width="320" height="240" alt="Linear_Speed_Test_Figure_2" src="https://github.com/user-attachments/assets/099c7bc7-104e-410b-9c01-6280a2a51db4" />
+<p><b>Figure 9.10-2.</b> Taking the inverse of the time reveals the underlying average speed of the vehicle at different PWM %'s</p>
+
+<p>Using NumPy, I now had a model that could take in PWM %'s and predict the speed (m/s) that the vehicle would move at. Taking the inverse of this model now allows the vehicle to receive a specific speed (m/s) instruction (such as from a ROS2 Twist command) and have it output the PWM % it predicts the motors must receive to achieve that speed.</p>
+
+<p><b>Notably:</b> I realize that this method will break if the underlying conversion equation changes for any reason such as differences in terrain or even battery output. In the future, I will look into closing the loop and using a sensor to determine the vehicle's actual speed and modify the PWM output in real time to reach a desired speed, but for now I'll simply try to replicate the testing conditions in which the data was collected as much as possible!</p>
+
+</details>
+
+---
+
 <details><summary><strong>8/24/26</strong> - Completed first prototype of the Feline Follower</summary>
 <p>Once I got all the motor wiring done, the final steps were just to put everything together, making sure to optimize the limited space that I had and the weight distribution of all the components.</p>
 
@@ -101,7 +117,6 @@ https://github.com/user-attachments/assets/06f4dbe5-0b82-4fd2-81a3-6a03bb42054f
 </details>
 
 ---
-
 
 <details><summary><strong>8/19/26</strong> - Connected the motor's wires to the protoshield </summary>
 
