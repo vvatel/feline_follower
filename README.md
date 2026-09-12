@@ -87,6 +87,22 @@ Desktop (ROS2/SLAM) <--Wi-Fi/ROS2--> Raspberry Pi 3B+ <--UART--> Arduino Uno R3 
 <details>
 <summary><strong><ins>Timeline</ins></strong></summary>
 
+<details><summary><strong>8/24/26</strong> - Completed first prototype of the Feline Follower</summary>
+<p>Once I got all the motor wiring done, the final steps were just to put everything together, making sure to optimize the limited space that I had and the weight distribution of all the components.</p>
+
+https://github.com/user-attachments/assets/06f4dbe5-0b82-4fd2-81a3-6a03bb42054f
+<p><b>Figure 8.24-1.</b> Demo of FelineFollowerv1.0 spinning after receiving a ROS2 Twist command with only angular velocity</p>
+
+<p>The full structure of this prototype includes a chassis with two layers. On the bottom layer is an Arduino Uno R3 velcroed to the frame controlling 4 Battery Operated DC Motors with a TB6612FNG Motor Driver. On the top layer, a rechargeable 12v battery pack which is used to power the motors and a power bank are velcroed to the frame. An encased Raspberry Pi 3B+ is velcroed to the top of the power bank which powers it. The Raspberry Pi is connected to a local router and listens to any Twist messages sent to the standard "/cmd_vel" topic, then translates those commands into PWM values sent through USB/Serial to the Arduino (this USB link also powers the Arduino), which then writes it to the motors.</p>
+
+<p><b>Notably:</b> I didn't plan how to attach the camera to this build so I am planning to either buy a part that I can velcro onto the build and screw the camera into, or designing a custom part in CAD. I'm leaning towards designing a custom part since I have none and want to gain experience with CAD, 3D Modeling and Printing, but this is supposed to be a computer vision project and I have already side-tracked quite a bit.
+
+
+</details>
+
+---
+
+
 <details><summary><strong>8/19/26</strong> - Connected the motor's wires to the protoshield </summary>
 
 <p>Now that I had the motor driver attached to the arduino, I could finally work on the wiring for the motors. Luckily, the protoshield that I used had multiple strips of connected holes allowing me to connect the motors and the motor driver easily.</p>
